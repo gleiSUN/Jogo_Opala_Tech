@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b0dt3r0a52d58"]
+
+[node name="Camera" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+drag_left_margin = 0.35
+drag_top_margin = 0.42
+drag_right_margin = 0.27
+editor_draw_drag_margin = true

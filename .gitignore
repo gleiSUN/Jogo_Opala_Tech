@@ -1,0 +1,16 @@
+# Godot-specific ignores
+*.import
+.import/
+export.cfg
+export_presets.cfg
+
+# System/tool ignores
+*.tmp
+*.bak
+*.swp
+*.user
+*.log
+
+# Editor settings
+.godot/
+/android/
