@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="2_1qhgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qhgk"]
-size = Vector2(1376, 20)
+size = Vector2(2479, 20)
 
 [node name="Teste" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-64, 0)
+position = Vector2(87.5, 0)
 shape = SubResource("RectangleShape2D_1qhgk")
 
 [node name="Player" parent="." instance=ExtResource("1_oessp")]

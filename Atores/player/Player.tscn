@@ -190,11 +190,11 @@ script = ExtResource("1_tgj3v")
 [node name="body" type="Node2D" parent="."]
 
 [node name="Animacoes" type="AnimatedSprite2D" parent="body"]
-position = Vector2(5, -20)
+position = Vector2(5, -6)
 sprite_frames = SubResource("SpriteFrames_13ilo")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.26958
+frame_progress = 0.0196058
 
 [node name="dash_cooldown" type="Timer" parent="."]
 one_shot = true
@@ -204,7 +204,6 @@ one_shot = true
 [node name="blink_timer" type="Timer" parent="."]
 
 [node name="colision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_cle0w")
 
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
