@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var Animacoes = $body/Animacoes
+@onready var animation: AnimationPlayer = $body/Animacoes
 
 const gravity = 1000
 @export var speed: int = 300
@@ -52,13 +52,13 @@ func player_jump(delta: float):
 		
 func player_animations():
 	if current_state == states.idle:
-		Animacoes.play("idle")
+		animation.play("idle")
 	elif current_state == states.run:
-		Animacoes.play("run")
+		animation.play("run")
 	elif current_state == states.attack:
-		Animacoes.play("attack")
+		animation.play("attack")
 	elif current_state == states.jump:
-		Animacoes.play("jump")
+		animation.play("jump")
 		
 func player_movements():
 	direction = Input.get_axis("move_left","move_right")
