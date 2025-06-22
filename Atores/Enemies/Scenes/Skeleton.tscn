@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://c4g2fofc7q44f"]
+
+[ext_resource type="Texture2D" uid="uid://ognsvu8ry3qt" path="res://Atores/Enemies/assets/skeleton/Skeleton Idle.png" id="1_mxftb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi02i"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d0ic"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wecgf"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urnlq"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjxin"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jf31"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjn0a"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytm0h"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5lgg"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ds40"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syrvs"]
+atlas = ExtResource("1_mxftb")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_014k6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi02i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d0ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wecgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urnlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjxin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jf31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjn0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytm0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5lgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ds40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syrvs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j11vo"]
+
+[node name="Skeleton" type="CharacterBody2D"]
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="body"]
+position = Vector2(4, -4)
+sprite_frames = SubResource("SpriteFrames_014k6")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.118508
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j11vo")

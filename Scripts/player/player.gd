@@ -8,8 +8,9 @@ const gravity = 1000
 @export var jump_horizontal = 100
 
 var direction = 0
+var is_attacking = false
 
-enum states {idle, run, jump, dash, death}
+enum states {idle, run, jump, dash, death, attack}
 
 var current_state: states
 
@@ -54,6 +55,8 @@ func player_animations():
 		Animacoes.play("idle")
 	elif current_state == states.run:
 		Animacoes.play("run")
+	elif current_state == states.attack:
+		Animacoes.play("attack")
 	elif current_state == states.jump:
 		Animacoes.play("jump")
 		
