@@ -621,6 +621,7 @@ one_shot = true
 [node name="colision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cle0w")
 
+[connection signal="animation_finished" from="body/Animacoes" to="." method="_on_animacoes_animation_finished"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="invincible_timer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="blink_timer" to="." method="_on_blink_timer_timeout"]
