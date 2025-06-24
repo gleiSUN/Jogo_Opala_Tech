@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://heo6rxgq05oa"]
+[gd_scene load_steps=5 format=3 uid="uid://heo6rxgq05oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="1_oessp"]
 [ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="2_1qhgk"]
+[ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="3_r0uml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qhgk"]
 size = Vector2(2479, 20)
@@ -18,3 +19,15 @@ collision_mask = 3
 
 [node name="Camera" parent="Player" instance=ExtResource("2_1qhgk")]
 position = Vector2(2, -78)
+
+[node name="Skeleton" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_r0uml")]
+position = Vector2(117, -23)
+patrol_points = NodePath("patrol_points")
+
+[node name="patrol_points" type="Node2D" parent="Skeleton"]
+
+[node name="point1" type="Marker2D" parent="Skeleton/patrol_points"]
+position = Vector2(-89, 12)
+
+[node name="point2" type="Marker2D" parent="Skeleton/patrol_points"]
+position = Vector2(94, 12)
