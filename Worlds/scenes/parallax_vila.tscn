@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d126u3awygx7c"]
+
+[ext_resource type="Texture2D" uid="uid://quw5ngsxkwl0" path="res://Worlds/assets/parallax/vila/background.png" id="1_w8eyt"]
+[ext_resource type="Texture2D" uid="uid://csne8hd28ffel" path="res://Worlds/assets/parallax/vila/middleground.png" id="2_mucce"]
+
+[node name="ParallaxVila" type="Node2D"]
+scale = Vector2(1.3, 1.3)
+
+[node name="background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(350, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+texture = ExtResource("1_w8eyt")
+
+[node name="middleground" type="Parallax2D" parent="."]
+repeat_size = Vector2(350, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="middleground"]
+texture = ExtResource("2_mucce")

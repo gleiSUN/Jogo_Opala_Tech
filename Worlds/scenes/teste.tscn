@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://heo6rxgq05oa"]
+[gd_scene load_steps=6 format=3 uid="uid://heo6rxgq05oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="1_oessp"]
+[ext_resource type="PackedScene" uid="uid://d126u3awygx7c" path="res://Worlds/scenes/parallax_vila.tscn" id="1_tyqom"]
 [ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="2_1qhgk"]
 [ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="3_r0uml"]
 
@@ -9,13 +10,17 @@ size = Vector2(2479, 20)
 
 [node name="Teste" type="StaticBody2D"]
 
+[node name="ParallaxVila" parent="." instance=ExtResource("1_tyqom")]
+position = Vector2(17, -144)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(87.5, 0)
 shape = SubResource("RectangleShape2D_1qhgk")
 
 [node name="Player" parent="." instance=ExtResource("1_oessp")]
-position = Vector2(21, -53)
+position = Vector2(21, -63)
 collision_mask = 3
+speed = 200
 
 [node name="Camera" parent="Player" instance=ExtResource("2_1qhgk")]
 position = Vector2(2, -78)
