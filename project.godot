@@ -22,6 +22,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 move_left={
@@ -55,6 +59,7 @@ attack={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Worlds"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Hitbox"
 
 [rendering]
 

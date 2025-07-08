@@ -91,5 +91,9 @@ func player_movements():
 
 func _on_animacoes_animation_finished(anim_name: StringName):
 	if anim_name == "attack_1":
-		is_attacking = false
-		current_state = states.idle
+		is_attacking = false 
+		
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("enemies"):
+		print(body.name)
+		body.queue_free()

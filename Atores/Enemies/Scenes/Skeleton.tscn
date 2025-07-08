@@ -384,7 +384,9 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j11vo"]
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_2jf31")
 
 [node name="body" type="Node2D" parent="."]
