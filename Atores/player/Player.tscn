@@ -195,7 +195,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_i21ll"]
 resource_name = "dash"
-length = 0.9
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -227,7 +227,7 @@ tracks/2/path = NodePath("body/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [69, 70, 71, 72, 73, 74, 75]
@@ -687,12 +687,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8swh"]
-size = Vector2(20, 37)
+size = Vector2(25, 37)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cle0w"]
 height = 36.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 14
 script = ExtResource("1_tgj3v")
 
 [node name="body" type="Node2D" parent="."]
@@ -711,15 +712,16 @@ libraries = {
 }
 
 [node name="hitbox" type="Area2D" parent="body"]
-collision_layer = 15
-collision_mask = 15
+collision_layer = 8
+collision_mask = 14
 
 [node name="colisão_hitbox" type="CollisionShape2D" parent="body/hitbox"]
-position = Vector2(25, -4)
+position = Vector2(25.5, -4)
 shape = SubResource("RectangleShape2D_t8swh")
 disabled = true
 
 [node name="dash_cooldown" type="Timer" parent="."]
+wait_time = 0.7
 one_shot = true
 
 [node name="invincible_timer" type="Timer" parent="."]
@@ -727,6 +729,7 @@ one_shot = true
 [node name="blink_timer" type="Timer" parent="."]
 
 [node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
 shape = SubResource("CapsuleShape2D_cle0w")
 
 [connection signal="animation_finished" from="body/Animacoes" to="." method="_on_animacoes_animation_finished"]

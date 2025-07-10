@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d126u3awygx7c" path="res://Worlds/scenes/parallax_vila.tscn" id="1_tyqom"]
 [ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="2_1qhgk"]
 [ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="3_r0uml"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qhgk"]
-size = Vector2(2479, 20)
+[ext_resource type="PackedScene" uid="uid://bw863njglep64" path="res://Worlds/scenes/tilsets_vila.tscn" id="5_jsvyd"]
 
 [node name="Teste" type="StaticBody2D"]
 
@@ -14,26 +12,28 @@ size = Vector2(2479, 20)
 position = Vector2(17, -144)
 scale = Vector2(1.2, 1.2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(87.5, 0)
-shape = SubResource("RectangleShape2D_1qhgk")
-
 [node name="Player" parent="." instance=ExtResource("1_oessp")]
-position = Vector2(21, -63)
+position = Vector2(-47, -67)
 collision_mask = 3
 speed = 200
 
 [node name="Camera" parent="Player" instance=ExtResource("2_1qhgk")]
 position = Vector2(2, -78)
+drag_top_margin = 0.7
 
-[node name="Skeleton" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_r0uml")]
-position = Vector2(117, -23)
+[node name="TilsetsVila" parent="." instance=ExtResource("5_jsvyd")]
+position = Vector2(-291, -28)
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="Skeleton" parent="enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_r0uml")]
+position = Vector2(193, -64)
 patrol_points = NodePath("patrol_points")
 
-[node name="patrol_points" type="Node2D" parent="Skeleton"]
+[node name="patrol_points" type="Node2D" parent="enemies/Skeleton"]
 
-[node name="point1" type="Marker2D" parent="Skeleton/patrol_points"]
+[node name="point1" type="Marker2D" parent="enemies/Skeleton/patrol_points"]
 position = Vector2(-89, 12)
 
-[node name="point2" type="Marker2D" parent="Skeleton/patrol_points"]
+[node name="point2" type="Marker2D" parent="enemies/Skeleton/patrol_points"]
 position = Vector2(94, 12)

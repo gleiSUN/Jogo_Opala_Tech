@@ -87,3 +87,9 @@ func enemy_animations():
 		
 func _on_timer_timeout():
 	can_walk = true
+
+func _on_hurtbox_area_entered(area):
+	print("entrou na hurtbox")
+
+func _on_hurtbox_body_entered(body):
+	print("entrou")
