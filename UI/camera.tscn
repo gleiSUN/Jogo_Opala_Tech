@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://b0dt3r0a52d58"]
 
 [node name="Camera" type="Camera2D"]
+limit_left = 0
+limit_top = -338
+limit_bottom = 180
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 drag_left_margin = 1.0
 drag_top_margin = 1.0
 drag_right_margin = 1.0

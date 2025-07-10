@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://heo6rxgq05oa"]
+[gd_scene load_steps=7 format=3 uid="uid://heo6rxgq05oa"]
 
 [ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="1_oessp"]
 [ext_resource type="PackedScene" uid="uid://d126u3awygx7c" path="res://Worlds/scenes/parallax_vila.tscn" id="1_tyqom"]
@@ -6,34 +6,47 @@
 [ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="3_r0uml"]
 [ext_resource type="PackedScene" uid="uid://bw863njglep64" path="res://Worlds/scenes/tilsets_vila.tscn" id="5_jsvyd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsvyd"]
+size = Vector2(29.5, 377)
+
 [node name="Teste" type="StaticBody2D"]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -153)
+shape = SubResource("RectangleShape2D_jsvyd")
+
 [node name="ParallaxVila" parent="." instance=ExtResource("1_tyqom")]
-position = Vector2(17, -144)
+position = Vector2(1071, -141)
 scale = Vector2(1.2, 1.2)
 
 [node name="Player" parent="." instance=ExtResource("1_oessp")]
-position = Vector2(-47, -67)
+position = Vector2(127, -58)
 collision_mask = 3
 speed = 200
 
 [node name="Camera" parent="Player" instance=ExtResource("2_1qhgk")]
-position = Vector2(2, -78)
-drag_top_margin = 0.7
+limit_top = -315
+limit_right = 3650
+limit_bottom = 34
+drag_left_margin = 0.18
+drag_top_margin = 0.0
+drag_right_margin = 0.2
+drag_bottom_margin = 0.41
 
 [node name="TilsetsVila" parent="." instance=ExtResource("5_jsvyd")]
-position = Vector2(-291, -28)
+position = Vector2(0, -29)
 
 [node name="enemies" type="Node2D" parent="."]
+position = Vector2(8, 22)
 
 [node name="Skeleton" parent="enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("3_r0uml")]
-position = Vector2(193, -64)
+position = Vector2(1180, -70)
 patrol_points = NodePath("patrol_points")
 
-[node name="patrol_points" type="Node2D" parent="enemies/Skeleton"]
+[node name="patrol_points2" type="Node2D" parent="enemies/Skeleton"]
 
-[node name="point1" type="Marker2D" parent="enemies/Skeleton/patrol_points"]
+[node name="point1" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
 position = Vector2(-89, 12)
 
-[node name="point2" type="Marker2D" parent="enemies/Skeleton/patrol_points"]
+[node name="point2" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
 position = Vector2(94, 12)

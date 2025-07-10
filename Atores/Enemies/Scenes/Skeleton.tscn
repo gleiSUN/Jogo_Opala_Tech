@@ -422,6 +422,14 @@ position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_2jf31")
 debug_color = Color(0.962208, 0.195943, 0, 0.42)
 
+[node name="patrol_points" type="Node2D" parent="."]
+
+[node name="point1" type="Marker2D" parent="patrol_points"]
+position = Vector2(-89, 12)
+
+[node name="point2" type="Marker2D" parent="patrol_points"]
+position = Vector2(94, 12)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
