@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://drkwr4ijpbah0"]
+[gd_scene load_steps=26 format=4 uid="uid://drkwr4ijpbah0"]
 
 [ext_resource type="Texture2D" uid="uid://xwv1m5oflcdv" path="res://Worlds/assets/tilesets/floresta/Decor.png" id="1_sju3m"]
 [ext_resource type="Texture2D" uid="uid://cqf6lf7vsul08" path="res://Worlds/assets/tilesets/floresta/oak_woods_tileset.png" id="2_thibj"]
@@ -444,7 +444,7 @@ texture = ExtResource("2_thibj")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
 7:0/0 = 0
-7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.539577, -8, 8, -8, 8, 8, -0.539577, 8)
 8:0/0 = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:0/0 = 0
@@ -456,7 +456,7 @@ texture = ExtResource("2_thibj")
 12:0/0 = 0
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:0/0 = 0
-13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.61873, -8, -1.61873, 8, -8, 8)
 15:0/0 = 0
 16:0/0 = 0
 18:0/0 = 0
@@ -480,7 +480,7 @@ texture = ExtResource("2_thibj")
 4:1/0 = 0
 5:1/0 = 0
 7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.539577, -8, 8, -8, 8, 8, -0.539577, 8)
 8:1/0 = 0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:1/0 = 0
@@ -492,7 +492,7 @@ texture = ExtResource("2_thibj")
 12:1/0 = 0
 12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:1/0 = 0
-13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.61873, -8, -1.61873, 8, -8, 8)
 15:1/0 = 0
 16:1/0 = 0
 18:1/0 = 0
@@ -1063,9 +1063,6 @@ sources/4 = SubResource("TileSetAtlasSource_8xokr")
 sources/5 = SubResource("TileSetAtlasSource_x3k33")
 sources/8 = SubResource("TileSetAtlasSource_ct2vx")
 sources/9 = SubResource("TileSetAtlasSource_cdi73")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_totft"]
-size = Vector2(112, 24)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5xj3"]
 texture = ExtResource("1_sju3m")
@@ -2775,19 +2772,6 @@ z_index = -1
 position = Vector2(0, 10)
 tile_map_data = PackedByteArray("AAAoAP//AQAHAAEAAAApAP//AQAIAAEAAAAqAP//AQAJAAEAAAArAP//AQAKAAEAAAAsAP//AQALAAEAAAAtAP//AQAMAAEAAAAuAP//AQANAAEAAAAoAP7/AQAHAAAAAAApAP7/AQAIAAAAAAAqAP7/AQAJAAAAAAArAP7/AQAKAAAAAAAsAP7/AQALAAAAAAAtAP7/AQAMAAAAAAAuAP7/AQANAAAAAAAAAP7/AQASAAwAAAAAAP//AQASAA0AAAABAP7/AQATAAwAAAABAP//AQATAA0AAAACAP7/AQAUAAwAAAACAP//AQAUAA0AAAADAP7/AQASAAwAAAADAP//AQASAA0AAAAEAP7/AQATAAwAAAAEAP//AQATAA0AAAAFAP7/AQAUAAwAAAAFAP//AQAUAA0AAAAGAP7/AQAFAAAAAAAGAP//AQAFAAEAAAA=")
 tile_set = SubResource("TileSet_jod0y")
-
-[node name="one_way_colison" type="StaticBody2D" parent="one_way_colision_layers"]
-position = Vector2(0, -8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="one_way_colision_layers/one_way_colison"]
-position = Vector2(56, -12)
-shape = SubResource("RectangleShape2D_totft")
-one_way_collision = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="one_way_colision_layers/one_way_colison"]
-position = Vector2(695.25, -12)
-shape = SubResource("RectangleShape2D_totft")
-one_way_collision = true
 
 [node name="lanternas" type="TileMapLayer" parent="."]
 z_index = -1

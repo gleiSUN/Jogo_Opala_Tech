@@ -11,17 +11,21 @@ config_version=5
 [application]
 
 config/name="gleiSUN_Opala_Tech"
+run/main_scene="uid://bcnxcy10qh1qx"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://Singletons-Autoloads/game_manager.gd"
+DisplayManager="*res://Singletons-Autoloads/DisplayManager.gd"
+GerenciadorDeCenas="*res://Singletons-Autoloads/gerenciador_de_cenas.gd"
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
@@ -29,6 +33,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 enemies=""
+player=""
 
 [input]
 

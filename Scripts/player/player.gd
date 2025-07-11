@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $body/Animacoes
 @onready var dash_cooldown: Timer = $dash_cooldown
 @onready var invencible_timer: Timer = $invincible_timer
+@onready var sprite: Sprite2D = $body/sprite
 
 @export var speed: int = 300
 @export var jump: int = -300
@@ -32,6 +33,13 @@ func _ready():
 	dash_duration = animation.get_animation("dash").length
 
 func _physics_process(delta: float):
+ 
+	if current_state == states.hurt:
+		player_falling(delta)
+		move_and_slide()
+		player_animations()
+		return
+
 	player_movements()
 	player_falling(delta)
 	player_idle(delta)
@@ -39,22 +47,26 @@ func _physics_process(delta: float):
 	player_run(delta)
 	player_jump(delta)
 	player_attack(delta)
-	
+
 	move_and_slide()
-	
 	player_animations()
+
 	
 func player_falling(delta: float):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		
 func player_idle(delta: float):
+	if current_state == states.hurt:
+		return
 	if is_attacking or is_dashing:
 		return
 	if is_on_floor() and direction == 0:
 		current_state = states.idle
 
 func player_run(delta: float):
+	if current_state == states.hurt:
+		return
 	if is_attacking or is_dashing:
 		return
 	if !is_on_floor():
@@ -64,6 +76,8 @@ func player_run(delta: float):
 		current_state = states.run
 		
 func player_jump(delta: float):
+	if current_state == states.hurt:
+		return
 	if is_attacking or is_dashing:
 		return
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -73,6 +87,8 @@ func player_jump(delta: float):
 		velocity.x += direction * jump_horizontal * delta
 		
 func player_attack(delta):
+	if current_state == states.hurt:
+		return
 	if is_dashing:
 		return
 	if Input.is_action_just_pressed("attack") and !is_attacking:
@@ -82,6 +98,8 @@ func player_attack(delta):
 		current_state = states.attack_1
 		
 func player_dash(delta):
+	if current_state == states.hurt:
+		return
 	if Input.is_action_just_pressed("dash") and direction != 0 and can_dash == true and !is_attacking:
 		is_dashing = true
 		dash_timer = dash_duration
@@ -102,6 +120,11 @@ func dash(delta):
 	dash_cooldown.start() 
 
 func player_animations():
+	if current_state == states.hurt:
+		if animation.current_animation != "hurt":
+			animation.play("hurt")
+		return
+		
 	match current_state:
 		states.idle:
 			if animation.current_animation != "idle":
@@ -127,6 +150,8 @@ func player_animations():
 
 		
 func player_movements():
+	if current_state == states.hurt:
+		return
 	if is_dashing:
 		return
 	if is_attacking and is_on_floor():
@@ -151,7 +176,7 @@ func _on_animacoes_animation_finished(anim_name: StringName):
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("enemies") and body.has_method("take_damage"):
 		if body in already_hit_enemies:
-			return # já acertou esse inimigo nesse ataque
+			return 
 		body.take_damage(damage_amount, global_position)
 		already_hit_enemies.append(body)
 
@@ -163,12 +188,15 @@ func take_damage(amount: int, hit_position: Vector2):
 		return
 	
 	current_hp -= amount
+	
+	flash_white()
 
 	if current_hp > 0:
-		current_state = states.hurt
-		animation.play("hurt")
-		is_invincible = true
-		invencible_timer.start()
+		if current_state != states.attack_1 and current_state != states.attack_2:
+			current_state = states.hurt
+			is_dashing = false
+			velocity.x = 0
+			animation.play("hurt")
 	else:
 		die()
 
@@ -180,6 +208,11 @@ func die():
 	
 	await animation.animation_finished
 	GameManager.restart_game()
+
+func flash_white():
+	sprite.modulate = Color(3, 3, 3) 
+	var tween := create_tween()
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1), 0.1)
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
