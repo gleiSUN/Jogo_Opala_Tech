@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd4c571rk8bhi"]
+
+[ext_resource type="Texture2D" uid="uid://dgq6vywol5qqm" path="res://Worlds/assets/parallax/floresta/background_layer_1.png" id="1_xwvji"]
+[ext_resource type="Texture2D" uid="uid://d1vh1jyvp03ud" path="res://Worlds/assets/parallax/floresta/background_layer_2.png" id="2_epm7k"]
+[ext_resource type="Texture2D" uid="uid://coas6klbijisq" path="res://Worlds/assets/parallax/floresta/background_layer_3.png" id="3_1ladr"]
+
+[node name="ParallaxFloresta" type="Node2D"]
+z_index = -2
+scale = Vector2(2, 2)
+
+[node name="background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(300, 0)
+repeat_times = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+texture = ExtResource("1_xwvji")
+
+[node name="midleground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(300, 0)
+repeat_times = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="midleground"]
+texture = ExtResource("2_epm7k")
+
+[node name="highground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(300, 0)
+repeat_times = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="highground"]
+texture = ExtResource("3_1ladr")

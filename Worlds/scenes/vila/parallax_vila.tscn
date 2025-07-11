@@ -10,14 +10,14 @@ scale = Vector2(1.3, 1.3)
 [node name="background" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.7, 1)
 repeat_size = Vector2(350, 0)
-repeat_times = 8
+repeat_times = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="background"]
 texture = ExtResource("1_w8eyt")
 
 [node name="middleground" type="Parallax2D" parent="."]
 repeat_size = Vector2(350, 0)
-repeat_times = 8
+repeat_times = 14
 
 [node name="Sprite2D" type="Sprite2D" parent="middleground"]
 texture = ExtResource("2_mucce")

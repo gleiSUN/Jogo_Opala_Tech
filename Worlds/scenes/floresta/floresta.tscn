@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://banc3ny7s0ve8"]
+
+[ext_resource type="PackedScene" uid="uid://dd4c571rk8bhi" path="res://Worlds/scenes/floresta/parallax_floresta.tscn" id="1_xs7l6"]
+[ext_resource type="PackedScene" uid="uid://drkwr4ijpbah0" path="res://Worlds/scenes/floresta/tileset_floresta.tscn" id="2_kyhq1"]
+[ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="3_10j4l"]
+[ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="4_mym8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgtm"]
+size = Vector2(40, 399)
+
+[node name="Floresta" type="Node2D"]
+
+[node name="ParallaxFloresta" parent="." instance=ExtResource("1_xs7l6")]
+position = Vector2(2689, 42)
+scale = Vector2(1.7, 1.7)
+
+[node name="TilesetFloresta" parent="." instance=ExtResource("2_kyhq1")]
+position = Vector2(-6, 119)
+
+[node name="Player" parent="." instance=ExtResource("3_10j4l")]
+position = Vector2(41, 106)
+speed = 200
+
+[node name="Camera" parent="Player" instance=ExtResource("4_mym8o")]
+position = Vector2(-1, 1)
+limit_top = -112
+limit_right = 3200
+drag_left_margin = 0.18
+drag_top_margin = 0.0
+drag_right_margin = 0.2
+drag_bottom_margin = 0.41
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-27, -1.5)
+shape = SubResource("RectangleShape2D_8tgtm")

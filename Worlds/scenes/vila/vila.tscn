@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://heo6rxgq05oa"]
+
+[ext_resource type="PackedScene" uid="uid://d126u3awygx7c" path="res://Worlds/scenes/vila/parallax_vila.tscn" id="1_wt73x"]
+[ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="2_uvfi2"]
+[ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="3_8bhdu"]
+[ext_resource type="PackedScene" uid="uid://bw863njglep64" path="res://Worlds/scenes/vila/tilsets_vila.tscn" id="4_xrn83"]
+[ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="5_tkni2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsvyd"]
+size = Vector2(29.5, 377)
+
+[node name="vila" type="Node2D"]
+
+[node name="ParallaxVila" parent="." instance=ExtResource("1_wt73x")]
+position = Vector2(1907, -142)
+scale = Vector2(1.2, 1.2)
+
+[node name="Player" parent="." instance=ExtResource("2_uvfi2")]
+position = Vector2(240, -52)
+collision_mask = 3
+speed = 200
+
+[node name="Camera" parent="Player" instance=ExtResource("3_8bhdu")]
+limit_top = -315
+limit_right = 3650
+limit_bottom = 34
+drag_left_margin = 0.18
+drag_top_margin = 0.0
+drag_right_margin = 0.2
+drag_bottom_margin = 0.41
+
+[node name="TilsetsVila" parent="." instance=ExtResource("4_xrn83")]
+position = Vector2(0, -29)
+
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(8, 22)
+
+[node name="Skeleton" parent="enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_tkni2")]
+position = Vector2(1180, -70)
+patrol_points = NodePath("patrol_points")
+
+[node name="patrol_points2" type="Node2D" parent="enemies/Skeleton"]
+
+[node name="point1" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
+position = Vector2(-89, 12)
+
+[node name="point2" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
+position = Vector2(94, 12)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-15, -153)
+shape = SubResource("RectangleShape2D_jsvyd")
