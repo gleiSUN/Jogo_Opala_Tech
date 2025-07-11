@@ -695,6 +695,7 @@ height = 36.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 10
 script = ExtResource("1_tgj3v")
+max_hp = 12
 
 [node name="body" type="Node2D" parent="."]
 

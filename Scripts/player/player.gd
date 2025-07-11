@@ -207,7 +207,7 @@ func die():
 	set_physics_process(false) 
 	
 	await animation.animation_finished
-	GameManager.restart_game()
+	GameManager.return_to_menu()
 
 func flash_white():
 	sprite.modulate = Color(3, 3, 3) 
