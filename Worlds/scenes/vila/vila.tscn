@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://heo6rxgq05oa"]
+[gd_scene load_steps=9 format=3 uid="uid://heo6rxgq05oa"]
 
 [ext_resource type="PackedScene" uid="uid://d126u3awygx7c" path="res://Worlds/scenes/vila/parallax_vila.tscn" id="1_wt73x"]
 [ext_resource type="PackedScene" uid="uid://dgi4u0tqsjnk1" path="res://Atores/player/Player.tscn" id="2_uvfi2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bw863njglep64" path="res://Worlds/scenes/vila/tilsets_vila.tscn" id="4_xrn83"]
 [ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="5_tkni2"]
 [ext_resource type="PackedScene" uid="uid://bw4r8724kwm2w" path="res://UI/next_level.tscn" id="6_uvfi2"]
+[ext_resource type="AudioStream" uid="uid://5mfeiykax53" path="res://Sounds/vila_theme.mp3" id="7_8bhdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsvyd"]
 size = Vector2(29.5, 377)
@@ -125,3 +126,10 @@ position = Vector2(94, 12)
 [node name="next_level" parent="." instance=ExtResource("6_uvfi2")]
 position = Vector2(3718, -174)
 next_scene = "floresta"
+
+[node name="audios" type="Node2D" parent="."]
+
+[node name="vila_theme" type="AudioStreamPlayer2D" parent="audios"]
+stream = ExtResource("7_8bhdu")
+autoplay = true
+parameters/looping = true

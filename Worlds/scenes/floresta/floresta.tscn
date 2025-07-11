@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://banc3ny7s0ve8"]
+[gd_scene load_steps=9 format=3 uid="uid://banc3ny7s0ve8"]
 
 [ext_resource type="PackedScene" uid="uid://dd4c571rk8bhi" path="res://Worlds/scenes/floresta/parallax_floresta.tscn" id="1_xs7l6"]
 [ext_resource type="PackedScene" uid="uid://drkwr4ijpbah0" path="res://Worlds/scenes/floresta/tileset_floresta.tscn" id="2_kyhq1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0dt3r0a52d58" path="res://UI/camera.tscn" id="4_mym8o"]
 [ext_resource type="PackedScene" uid="uid://c4g2fofc7q44f" path="res://Atores/Enemies/Scenes/Skeleton.tscn" id="5_10j4l"]
 [ext_resource type="PackedScene" uid="uid://bw4r8724kwm2w" path="res://UI/next_level.tscn" id="6_mym8o"]
+[ext_resource type="AudioStream" uid="uid://i4308bn3rw0g" path="res://Sounds/floresta_theme.mp3" id="7_8tgtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tgtm"]
 size = Vector2(40, 399)
@@ -71,3 +72,10 @@ scale = Vector2(1.2, 1.2)
 
 [node name="Skeleton" parent="enemies4" instance=ExtResource("5_10j4l")]
 position = Vector2(383, 105)
+
+[node name="audios" type="Node2D" parent="."]
+
+[node name="floresta_theme" type="AudioStreamPlayer2D" parent="audios"]
+stream = ExtResource("7_8tgtm")
+autoplay = true
+parameters/looping = true
