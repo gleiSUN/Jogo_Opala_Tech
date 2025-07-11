@@ -16,7 +16,7 @@ position = Vector2(1907, -142)
 scale = Vector2(1.2, 1.2)
 
 [node name="Player" parent="." instance=ExtResource("2_uvfi2")]
-position = Vector2(240, -52)
+position = Vector2(925, -65)
 collision_mask = 3
 speed = 200
 
@@ -36,7 +36,8 @@ position = Vector2(0, -29)
 position = Vector2(8, 22)
 
 [node name="Skeleton" parent="enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_tkni2")]
-position = Vector2(1180, -70)
+position = Vector2(1180, -74)
+scale = Vector2(1.4, 1.4)
 patrol_points = NodePath("patrol_points")
 
 [node name="patrol_points2" type="Node2D" parent="enemies/Skeleton"]

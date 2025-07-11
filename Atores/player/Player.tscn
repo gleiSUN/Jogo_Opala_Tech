@@ -79,7 +79,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_3sftm"]
 resource_name = "attack_1"
-length = 0.8
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,7 +123,7 @@ tracks/3/path = NodePath("body/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [14, 15, 16, 17, 18, 19, 20]
@@ -135,7 +135,7 @@ tracks/4/path = NodePath("body/hitbox/colisão_hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.596721, 0.756481),
+"times": PackedFloat32Array(0, 0.533333, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -687,7 +687,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8swh"]
-size = Vector2(25, 37)
+size = Vector2(28, 37)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cle0w"]
 height = 36.0
@@ -716,7 +716,7 @@ collision_layer = 8
 collision_mask = 14
 
 [node name="colisão_hitbox" type="CollisionShape2D" parent="body/hitbox"]
-position = Vector2(25.5, -4)
+position = Vector2(24, -4)
 shape = SubResource("RectangleShape2D_t8swh")
 disabled = true
 

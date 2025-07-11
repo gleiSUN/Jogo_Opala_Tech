@@ -189,6 +189,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_fjn0a"]
 resource_name = "hurt"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -220,7 +221,7 @@ tracks/2/path = NodePath("body/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 7, 6]
@@ -232,7 +233,7 @@ tracks/3/path = NodePath("CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(4, 0)]
@@ -277,6 +278,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ytm0h"]
@@ -365,7 +378,7 @@ tracks/3/path = NodePath("CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.9),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -1)]
@@ -383,6 +396,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j11vo"]
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jf31"]
 size = Vector2(23, 27)
@@ -406,7 +420,7 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_j11vo")
 
@@ -414,11 +428,11 @@ shape = SubResource("CapsuleShape2D_j11vo")
 wait_time = 2.0
 autostart = true
 
-[node name="hurtbox" type="Area2D" parent="."]
+[node name="hurtbox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(-1.5, -1.5)
+position = Vector2(2, -1)
 shape = SubResource("RectangleShape2D_2jf31")
 debug_color = Color(0.962208, 0.195943, 0, 0.42)
 
@@ -430,6 +444,7 @@ position = Vector2(-89, 12)
 [node name="point2" type="Marker2D" parent="patrol_points"]
 position = Vector2(94, 12)
 
+[connection signal="animation_finished" from="body/animacoes" to="." method="_on_animacoes_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

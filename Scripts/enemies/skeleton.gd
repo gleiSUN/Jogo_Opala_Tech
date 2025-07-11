@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var speed: int = 1500
 @export var wait_time : int = 3
 
+
 const gravity = 1000
 var direction = Vector2.LEFT
 enum state{idle, run, hurt, attack,death, react}
@@ -16,8 +17,13 @@ var points_positions : Array[Vector2]
 var current_point: Vector2
 var current_point_position: int
 var can_walk : bool
+@export var max_hp: int = 6
+@export var damage_amount: int = 2
+var current_hp: int
 
 func _ready():
+	current_hp = max_hp
+
 	if patrol_points != null:
 		number_of_points = patrol_points.get_children().size()
 		for point in patrol_points.get_children():
@@ -38,12 +44,17 @@ func _ready():
 	current_state = state.idle
 
 func _physics_process(delta: float):
+	match current_state:
+		state.hurt, state.death:
+			velocity.x = move_toward(velocity.x, 0, speed * delta)
+			move_and_slide()
+			enemy_animations()
+			return
+
 	enemy_gravity(delta)
 	enemy_idle(delta)
 	enemy_run(delta)
-	
 	move_and_slide()
-	
 	enemy_animations()
 	
 func enemy_gravity(delta):
@@ -80,16 +91,49 @@ func enemy_run(delta):
 		timer.start()
 		
 func enemy_animations():
-	if current_state == state.idle && !can_walk:
-		animation.play("idle")
-	elif current_state == state.run && can_walk:
-		animation.play("run")
-		
+	match current_state:
+		state.idle:
+			animation.play("idle")
+		state.run:
+			animation.play("run")
+		state.hurt:
+			if animation.current_animation != "hurt":
+				animation.play("hurt")
+		state.death:
+			if animation.current_animation != "death":
+				animation.play("death")
+	
 func _on_timer_timeout():
 	can_walk = true
 
-func _on_hurtbox_area_entered(area):
-	print("entrou na hurtbox")
+func get_damage_amount() -> int:
+	return damage_amount
+	
+func take_damage(amount: int, hit_position: Vector2):
+	if current_state == state.death:
+		return
+	
+	print("tomou dano")
+	current_hp -= amount
+	
+	if current_hp <= 0:
+		die()
+	else:
+		current_state = state.hurt
+		animation.play("hurt")
+		velocity = Vector2.ZERO
+		can_walk = false
+		timer.start()
 
-func _on_hurtbox_body_entered(body):
-	print("entrou")
+func die():
+	current_state = state.death
+	animation.play("death")
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	await animation.animation_finished
+	queue_free()
+
+
+func _on_animacoes_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hurt" and current_state == state.hurt:
+		current_state = state.idle

@@ -7,23 +7,28 @@ extends CharacterBody2D
 @export var speed: int = 300
 @export var jump: int = -300
 @export var jump_horizontal = 100
+@export var max_hp : int = 30
 
 const gravity = 1000
-const dash_speed := 270
-var dash_duration := 0.15
+const dash_speed := 280
+var current_hp: int
+var dash_duration := 0.30
 var direction = 0
 var is_attacking = false
 var can_dash := true
 var is_dashing := false
 var dash_timer := 0.0
 var is_invincible := false
+var damage_amount : int = 2
+var already_hit_enemies = []
 
-enum states {idle, run, jump, dash, death, attack_1,attack_2}
+enum states {idle, run, jump, dash, death, attack_1,attack_2,hurt}
 
 var current_state: states
 
 func _ready():
 	current_state = states.idle
+	current_hp = max_hp
 	dash_duration = animation.get_animation("dash").length
 
 func _physics_process(delta: float):
@@ -116,7 +121,9 @@ func player_animations():
 		states.jump:
 			if animation.current_animation != "jump":
 				animation.play("jump")
-
+		states.hurt:
+			if animation.current_animation != "hurt":
+				animation.play("hurt")
 
 		
 func player_movements():
@@ -137,14 +144,45 @@ func player_movements():
 func _on_animacoes_animation_finished(anim_name: StringName):
 	if anim_name == "attack_1":
 		is_attacking = false 
-		
+		already_hit_enemies.clear() 
+	if anim_name == "hurt":
+		current_state = states.idle
+
 func _on_hitbox_body_entered(body):
-	if body.is_in_group("enemies"):
-		print(body.name)
-		body.queue_free()
+	if body.is_in_group("enemies") and body.has_method("take_damage"):
+		if body in already_hit_enemies:
+			return # já acertou esse inimigo nesse ataque
+		body.take_damage(damage_amount, global_position)
+		already_hit_enemies.append(body)
+
+func get_damage_amount() -> int:
+	return damage_amount
+		
+func take_damage(amount: int, hit_position: Vector2):
+	if is_invincible or current_state == states.death:
+		return
+	
+	current_hp -= amount
+
+	if current_hp > 0:
+		current_state = states.hurt
+		animation.play("hurt")
+		is_invincible = true
+		invencible_timer.start()
+	else:
+		die()
+
+func die():
+	current_state = states.death
+	velocity = Vector2.ZERO
+	animation.play("death")
+	set_physics_process(false) 
+	
+	await animation.animation_finished
+	GameManager.restart_game()
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
 
-#func _on_invincible_timer_timeout():
-	
+func _on_invincible_timer_timeout():
+	is_invincible = false
