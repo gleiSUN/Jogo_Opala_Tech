@@ -1,7 +1,8 @@
-[gd_scene load_steps=63 format=3 uid="uid://bcnxcy10qh1qx"]
+[gd_scene load_steps=64 format=3 uid="uid://bcnxcy10qh1qx"]
 
 [ext_resource type="Script" uid="uid://ddmhy87cxl01t" path="res://Scripts/UI/menu_principal.gd" id="1_x51cq"]
 [ext_resource type="Texture2D" uid="uid://bkam64npiv1pv" path="res://UI/assets/menu_principal/castelo_menu_principal.png" id="2_mtw6q"]
+[ext_resource type="FontFile" uid="uid://d1oxgc1u1c1ac" path="res://UI/assets/ThaleahFat.ttf" id="3_mtw6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtjvn"]
 atlas = ExtResource("2_mtw6q")
@@ -443,6 +444,24 @@ animation = &"fundo"
 autoplay = "fundo"
 frame_progress = 0.0725996
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -27.0
+offset_right = 54.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mtw6q")
+text = "SHADOW OF CASTLE"
+
 [node name="Ui" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -463,8 +482,10 @@ alignment = 1
 
 [node name="BotaoJogar" type="Button" parent="Ui/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mtw6q")
 text = "Jogar"
 
 [node name="BotaoSair" type="Button" parent="Ui/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mtw6q")
 text = "Sair"

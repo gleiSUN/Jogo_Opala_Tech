@@ -40,67 +40,34 @@ collision_mask = 7
 position = Vector2(-27, -1.5)
 shape = SubResource("RectangleShape2D_8tgtm")
 
-[node name="enemies" type="Node2D" parent="."]
-position = Vector2(1060, 101)
-scale = Vector2(1.3, 1.3)
-
-[node name="Skeleton" parent="enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_10j4l")]
-patrol_points = NodePath("patrol_points2")
-
-[node name="patrol_points2" type="Node2D" parent="enemies/Skeleton"]
-
-[node name="point1" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
-position = Vector2(-89, 12)
-
-[node name="point2" type="Marker2D" parent="enemies/Skeleton/patrol_points2"]
-position = Vector2(94, 12)
-
-[node name="enemies" type="Node2D" parent="enemies"]
-position = Vector2(1060, 101)
-scale = Vector2(1.3, 1.3)
-
-[node name="Skeleton" parent="enemies/enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_10j4l")]
-patrol_points = NodePath("patrol_points2")
-
-[node name="patrol_points2" type="Node2D" parent="enemies/enemies/Skeleton"]
-
-[node name="point1" type="Marker2D" parent="enemies/enemies/Skeleton/patrol_points2"]
-position = Vector2(-89, 12)
-
-[node name="point2" type="Marker2D" parent="enemies/enemies/Skeleton/patrol_points2"]
-position = Vector2(94, 12)
-
 [node name="next_level" parent="." instance=ExtResource("6_mym8o")]
 position = Vector2(3368, 5)
 next_scene = "menu principal"
 
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(-71, -21)
+scale = Vector2(1.2, 1.2)
+
+[node name="Skeleton" parent="enemies" instance=ExtResource("5_10j4l")]
+position = Vector2(383, 105)
+
 [node name="enemies2" type="Node2D" parent="."]
-position = Vector2(936, 103)
-scale = Vector2(1.3, 1.3)
+position = Vector2(390, -26)
+scale = Vector2(1.2, 1.2)
 
-[node name="Skeleton" parent="enemies2" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_10j4l")]
-position = Vector2(-326.923, -5.84126e-06)
-patrol_points = NodePath("patrol_points2")
+[node name="Skeleton" parent="enemies2" instance=ExtResource("5_10j4l")]
+position = Vector2(383, 105)
 
-[node name="patrol_points2" type="Node2D" parent="enemies2/Skeleton"]
+[node name="enemies3" type="Node2D" parent="."]
+position = Vector2(754, -24)
+scale = Vector2(1.2, 1.2)
 
-[node name="point1" type="Marker2D" parent="enemies2/Skeleton/patrol_points2"]
-position = Vector2(-89, 12)
+[node name="Skeleton" parent="enemies3" instance=ExtResource("5_10j4l")]
+position = Vector2(383, 105)
 
-[node name="point2" type="Marker2D" parent="enemies2/Skeleton/patrol_points2"]
-position = Vector2(94, 12)
+[node name="enemies4" type="Node2D" parent="."]
+position = Vector2(1238, -23)
+scale = Vector2(1.2, 1.2)
 
-[node name="enemies" type="Node2D" parent="enemies2"]
-position = Vector2(1060, 101)
-scale = Vector2(1.3, 1.3)
-
-[node name="Skeleton" parent="enemies2/enemies" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_10j4l")]
-patrol_points = NodePath("patrol_points2")
-
-[node name="patrol_points2" type="Node2D" parent="enemies2/enemies/Skeleton"]
-
-[node name="point1" type="Marker2D" parent="enemies2/enemies/Skeleton/patrol_points2"]
-position = Vector2(-89, 12)
-
-[node name="point2" type="Marker2D" parent="enemies2/enemies/Skeleton/patrol_points2"]
-position = Vector2(94, 12)
+[node name="Skeleton" parent="enemies4" instance=ExtResource("5_10j4l")]
+position = Vector2(383, 105)
