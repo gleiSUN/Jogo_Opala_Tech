@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dgi4u0tqsjnk1"]
 
 [ext_resource type="Script" uid="uid://ys2bvqaul4xs" path="res://Scripts/player/player.gd" id="1_tgj3v"]
-[ext_resource type="Texture2D" uid="uid://d2s4cxrlsvjd0" path="res://Atores/player/SpriteSheet/Warrior_SheetnoEffect.png" id="3_46dx0"]
+[ext_resource type="Texture2D" uid="uid://cr2vww1cj8bpy" path="res://Atores/player/SpriteSheet/Warrior_SheetnoEffect.png" id="3_46dx0"]
 
 [sub_resource type="Animation" id="Animation_tubu2"]
 tracks/0/type = "value"

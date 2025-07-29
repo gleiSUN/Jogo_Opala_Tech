@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg4ccqpnn4jl3"]
+
+[sub_resource type="GDScript" id="GDScript_2deun"]
+script/source = "extends Area2D
+ 
+func _on_body_entered(body: Node2D) -> void:
+	# se foi atinido pela flecha, recebe o dano e a flecha some
+	if body.name.begins_with(\"arrow\"):
+		owner.take_damage(body.damage)
+		body.queue_free()
+"
+
+[node name="hitbox" type="Area2D"]
+collision_layer = 32
+collision_mask = 9
+script = SubResource("GDScript_2deun")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

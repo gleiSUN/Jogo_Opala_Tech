@@ -1,9 +1,9 @@
 [gd_scene load_steps=65 format=3 uid="uid://bcnxcy10qh1qx"]
 
 [ext_resource type="Script" uid="uid://ddmhy87cxl01t" path="res://Scripts/UI/menu_principal.gd" id="1_x51cq"]
-[ext_resource type="Texture2D" uid="uid://bkam64npiv1pv" path="res://UI/assets/menu_principal/castelo_menu_principal.png" id="2_mtw6q"]
-[ext_resource type="FontFile" uid="uid://d1oxgc1u1c1ac" path="res://UI/assets/ThaleahFat.ttf" id="3_mtw6q"]
-[ext_resource type="AudioStream" uid="uid://twwxl3kqlqhx" path="res://Sounds/menu_theme.mp3" id="4_gtjvn"]
+[ext_resource type="Texture2D" uid="uid://kxi4rrqmwerh" path="res://UI/assets/menu_principal/castelo_menu_principal.png" id="2_mtw6q"]
+[ext_resource type="FontFile" uid="uid://c6ctl4mxiar7h" path="res://UI/assets/ThaleahFat.ttf" id="3_mtw6q"]
+[ext_resource type="AudioStream" uid="uid://b2hwu536bncvn" path="res://Sounds/menu_theme.mp3" id="4_gtjvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtjvn"]
 atlas = ExtResource("2_mtw6q")

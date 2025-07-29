@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://btpcfo20c7rvp"]
+
+[sub_resource type="GDScript" id="GDScript_4m5br"]
+script/source = "extends Area2D
+
+@export var mob : Enemy
+@export var collision: CollisionShape2D
+@onready var atk_cooldown: Timer = $attack_cooldown
+
+var distance
+var in_attack_cooldown := false
+
+func _physics_process(_delta: float) -> void:
+	# Calcula a distancia entre o mob e o player
+	distance = Mobs.distance_to(mob, mob.player)
+	
+	# Ativa o ataque
+	if (distance <= mob.dist_mellee
+		#and !mob.player.is_dead 
+		and !mob.is_stuned 
+		and !mob.is_attacking
+		and !mob.is_range_attacking
+		and !in_attack_cooldown
+		and mob.has_spawned):
+			
+		mob.is_attacking = true
+		in_attack_cooldown = true
+		mob.speed /= 5
+		atk_cooldown.start()
+		
+
+func _on_body_entered(body: Node2D) -> void:
+	if collision.disabled: return
+	# se o player tiver entrado em contato com a area, ele toma o dano referente á força do mob
+	if body is Player:
+		body.take_damage(mob.damage, global_position)
+		
+
+func _on_area_entered(area: Area2D) -> void:
+	# se  player estiver com o parry ativo no momento do impacto, o mob recebe um parry
+	if area.name == \"parry\":
+		collision.set_deferred(\"disabled\", true)
+		mob.has_parried = true
+		
+	# Ao tomar stun, a area de ataque é desligada para evitar hits injustos
+	if mob.parry_resistance <= 0:
+		collision.set_deferred(\"disabled\", true)
+		
+func _on_attack_cooldown_timeout() -> void:
+	in_attack_cooldown = false
+	mob.speed *= 5
+"
+
+[node name="type_mellee" type="Area2D" groups=["enemies_attacks"]]
+collision_layer = 8
+script = SubResource("GDScript_4m5br")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.4
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

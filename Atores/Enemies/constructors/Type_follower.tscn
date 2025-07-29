@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://c216u40py6dyu"]
+
+[sub_resource type="GDScript" id="GDScript_vf8pr"]
+script/source = "extends Node
+
+@export var mob : Enemy
+
+@export var edge_sensor: RayCast2D
+@export var step_sensor: RayCast2D
+@export var high_wall_sensor: RayCast2D
+
+var distance
+var is_below := false
+var at_edge := false
+var at_step := false
+var at_jumpable_block := false
+
+func _ready() -> void:
+	# Seta o inimigo como tipo perseguidor no Enemy.gd
+	mob.type_follower = true
+
+func _process(_delta: float) -> void:
+	mob.distance = distance
+	
+	# Verifica os sensores de colisao
+	distance = Mobs.distance_to(mob, mob.player)
+	is_below = Mobs.is_below(mob, mob.player)
+	at_edge = !edge_sensor.is_colliding()
+	at_step = step_sensor.is_colliding()
+	at_jumpable_block = at_step and !high_wall_sensor.is_colliding()
+	
+	# Controla quando pode seguir o player ou nao
+	mob.is_following = (
+		distance <= mob.dist_follow
+		and !is_below
+		and !at_edge
+		#and !mob.player.is_dead
+		and !mob.is_stuned
+		and !mob.is_attacking
+		and !mob.is_range_attacking
+		and mob.has_spawned
+		and !high_wall_sensor.is_colliding()
+	)
+	
+	# Flipa o mob para ele sempre estar de frente para o player
+	if !mob.is_dead and mob.has_spawned and !mob.is_attacking and !mob.is_range_attacking:
+		mob.flip_sprite()
+	
+	# Controla se o mob pode saltar degraus ou nao
+	mob.can_jump = (
+		mob.should_jump
+		and mob.is_following
+		and at_jumpable_block
+	)
+"
+
+[node name="TypeFollower" type="Node2D"]
+script = SubResource("GDScript_vf8pr")

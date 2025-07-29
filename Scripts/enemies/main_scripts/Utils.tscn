@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2npx8fqe2ke8"]
+
+[sub_resource type="GDScript" id="GDScript_wvtw3"]
+script/source = "extends Node2D
+
+# retorna a cena principal do mapa ( se estiver no mapa de floresta, ele sera o retorno)
+func get_main_scene(from: Node) -> Node:
+	var current = from
+	while current:
+		var player = current.get_node_or_null(\"player\")
+		if player:
+			return current
+		current = current.get_parent()
+	return null
+
+# busca o player a partir do root
+func get_player():
+	var players = get_tree().get_nodes_in_group(\"player\")
+	if players.size() > 0:
+		return players[0]
+	return null
+"
+
+[node name="Utils" type="Node2D"]
+script = SubResource("GDScript_wvtw3")

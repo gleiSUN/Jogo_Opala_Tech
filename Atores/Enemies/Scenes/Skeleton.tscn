@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=3 uid="uid://c4g2fofc7q44f"]
 
 [ext_resource type="Script" uid="uid://b3kbpcojgwgre" path="res://Scripts/enemies/skeleton.gd" id="1_2jf31"]
-[ext_resource type="Texture2D" uid="uid://ognsvu8ry3qt" path="res://Atores/Enemies/assets/skeleton/Skeleton Idle.png" id="1_mxftb"]
-[ext_resource type="Texture2D" uid="uid://dyootf06h2tgv" path="res://Atores/Enemies/assets/skeleton/Skeleton Walk.png" id="2_2d0ic"]
-[ext_resource type="Texture2D" uid="uid://b30g7i1myf7ar" path="res://Atores/Enemies/assets/skeleton/Skeleton Attack.png" id="3_wecgf"]
-[ext_resource type="Texture2D" uid="uid://oj2e28o36swc" path="res://Atores/Enemies/assets/skeleton/Skeleton Dead.png" id="4_urnlq"]
-[ext_resource type="Texture2D" uid="uid://dnpbjinbquoeu" path="res://Atores/Enemies/assets/skeleton/Skeleton Hit.png" id="5_vjxin"]
-[ext_resource type="Texture2D" uid="uid://bscltbwcv23ha" path="res://Atores/Enemies/assets/skeleton/Skeleton React.png" id="6_vjxin"]
+[ext_resource type="Texture2D" uid="uid://dkcvdda7vtxcp" path="res://Atores/Enemies/assets/skeleton/Skeleton Idle.png" id="1_mxftb"]
+[ext_resource type="Texture2D" uid="uid://c2c5rqjtxj1yo" path="res://Atores/Enemies/assets/skeleton/Skeleton Walk.png" id="2_2d0ic"]
+[ext_resource type="Texture2D" uid="uid://krpwpn68qqlb" path="res://Atores/Enemies/assets/skeleton/Skeleton Attack.png" id="3_wecgf"]
+[ext_resource type="Texture2D" uid="uid://1bwoociguglf" path="res://Atores/Enemies/assets/skeleton/Skeleton Dead.png" id="4_urnlq"]
+[ext_resource type="Texture2D" uid="uid://bathmh1qe0ai2" path="res://Atores/Enemies/assets/skeleton/Skeleton Hit.png" id="5_vjxin"]
+[ext_resource type="Texture2D" uid="uid://bt0g1v433xu3v" path="res://Atores/Enemies/assets/skeleton/Skeleton React.png" id="6_vjxin"]
 
 [sub_resource type="Animation" id="Animation_bi02i"]
 length = 0.001
