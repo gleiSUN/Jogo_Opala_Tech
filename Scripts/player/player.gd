@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var animation: AnimationPlayer = $body/Animacoes
 @onready var dash_cooldown: Timer = $dash_cooldown
@@ -177,7 +178,7 @@ func _on_hitbox_body_entered(body):
 	if body.is_in_group("enemies") and body.has_method("take_damage"):
 		if body in already_hit_enemies:
 			return 
-		body.take_damage(damage_amount, global_position)
+		body.take_damage(damage_amount)
 		already_hit_enemies.append(body)
 
 func get_damage_amount() -> int:
