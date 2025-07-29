@@ -142,7 +142,7 @@ func _on_timer_timeout():
 func get_damage_amount() -> int:
 	return damage_amount
 	
-func take_damage(amount: int, hit_position: Vector2):
+func take_damage(amount: int ): # removi isso , hit_position: Vector2
 	if current_state == state.death:
 		return
 
