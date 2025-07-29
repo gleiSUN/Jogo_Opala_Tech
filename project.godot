@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GameManager="*res://Singletons-Autoloads/game_manager.gd"
 DisplayManager="*res://Singletons-Autoloads/DisplayManager.gd"
 GerenciadorDeCenas="*res://Singletons-Autoloads/gerenciador_de_cenas.gd"
+Mobs="*res://Scripts/enemies/main_scripts/Mobs.gd"
+Utils="*res://Scripts/enemies/main_scripts/Utils.tscn"
 
 [display]
 
